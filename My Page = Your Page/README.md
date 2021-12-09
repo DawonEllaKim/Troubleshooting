@@ -27,32 +27,29 @@
 <img src="Image/1.png">
 
 → 이렇게 콘솔 창을 찍게 코드를 짠 후 오류 나는 패턴방식으로 작동을 해보았다.
-<br>
+
 <img src="Image/2.png">
 
 → 제일 처음 나의 페이지에 들어갔을 때 아무런 문제 없이 정상 작동 (나의 강아지 : 쿤이👌🏻 , 나의 고유 ID 값 : 6👌🏻 )
-<br>
+
 <img src="Image/3.png">
 
 → 개스타를 타고 남의 my page에 갔을 때 오류 발견!
 → 22번 사람의 페이지이기 때문에 userInfo가 22번 사람의 정보가 들어와야 하는데 여전히 6번 사람(나)의 강아지(쿤이)가 들어옴을 확인! Oh No❗️ 또한, 이 상태에서 나의 페이지로 돌아가면 정말 믹스돼서, 나의 정보는 나오는데 게시물은 남의 것이 나오는 엄청난 오류 ❗️
-<br>
+
 <img src="Image/4.png">
 
 → 우리가 currentLogInUserId (=userId)를 파람스를 통해서 받아오는데, 혹시 여기가 문제인가? 생각이 돼서 봤는데 파람스는 올바르게 들어온다. 내 페이지에서는 6번으로 남의 페이지에선 그 사람의 Id로!
 
-<br>
 <img src="Image/5.png">
 <img src="Image/6.png">
 
 → 그래서 우선 디스패치해 주는 곳을 확인!
-→ MyPage를 디스패치하는 곳을 보았는데 우리는 현재 userId (현재 로그인 한 사람의 ID, currentLogInUserId)를 서버에 보내주고 있었다. 그러니까 당연히 서버는 나의 userInfo를 어느 페이지에서나 내려주었고, 우리는 모든 사람의 <br>페이지에서 내 정보가 보이는 거였다.
-<br><img src="Image/7.png">
+→ MyPage를 디스패치하는 곳을 보았는데 우리는 현재 userId (현재 로그인 한 사람의 ID, currentLogInUserId)를 서버에 보내주고 있었다. 그러니까 당연히 서버는 나의 userInfo를 어느 페이지에서나 내려주었고, 우리는 모든 사람의 페이지에서 내 정보가 보이는 거였다.
+<img src="Image/7.png">
 <img src="Image/8.png">
 
 → 그래서 디스패치하는곳에서 currentPageUserId를 보내주고 리덕스에서는 url에 제대로된 아이디를 넣어줌으로써 모든 페이지에서 내 userInfo가 보임을 고쳤다 🎉  (이제, 각자 페이지에서 각자의 userInfo가 잘 들어옴!)
-
-<br>
 
 ✍🏻 **2. 나의 My Page에서 남의 게시물이 보임**
 <img src="Image/9.png">
